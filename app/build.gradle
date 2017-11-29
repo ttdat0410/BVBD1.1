@@ -1,29 +1,130 @@
+def versionMajor = 1;
+def versionMinor = 0;
+def versionPatch = 0;
+def versionBuild = {
+    if (project.hasProperty("buildNumber")) {
+        return project.buildNumber as int;
+    } else if (System.getenv("BUILD_NUMBER")) {
+        return System.getenv("BUILD_NUMBER") as int;
+    } else {
+        return 0;
+    }
+}.call();
+
+def buildTime = new Date().format("HH:mm:ss, dd/MM/yyyy", TimeZone.getTimeZone("UTC"))
+def preDexEnable = "true".equals(System.getProperty("pre-dex", "true"));
+def projectName = "bvbd"
+
+def isCIBuild = System.getenv()['bamboo-planName'] ? true : false;
+
+Properties properties = new Properties();
+properties.load(project.rootProject.file('keystores/bvbd.properties').newDataInputStream());
+
+def sf = properties.getProperty('store.file');
+def sp = properties.getProperty('store.password');
+def ka = properties.getProperty('key.alias');
+def kp = properties.getProperty('key.password');
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    signingConfigs {
+        release {
+            storeFile file("${sf}")
+            storePassword "${sp}"
+            keyAlias "${ka}"
+            keyPassword "${kp}"
+        }
+    }
+
     defaultConfig {
+        useLibrary 'org.apache.http.legacy'
         applicationId "vn.vnpt.ansv.bvbd11"
         minSdkVersion 19
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        targetSdkVersion 23
+        versionCode versionMajor * 10000000 + versionMinor * 100000 + versionPatch * 1000 + versionBuild
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+        buildConfigField "String", "BUILD_TIME", "\"${buildTime}\""
+
     }
+
+    compileOptions {
+        sourceCompatibility org.gradle.api.JavaVersion.VERSION_1_7;
+        targetCompatibility org.gradle.api.JavaVersion.VERSION_1_7;
+    }
+
+    dexOptions {
+        preDexLibraries = preDexEnable;
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    // Rename the output apk
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            // don't use gitSha with dev builds because AS gets confused
+            def filePrefix = isCIBuild ? "${projectName}-${variant.name}-${versionName}-${gitSha}" : "${projectName}-${variant.name}-${versionName}"
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                output.outputFile = file("$project.buildDir/${filePrefix}.apk")
+            }
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
-    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:recyclerview-v7:23.3.0'
+    compile 'com.android.support:cardview-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
+    // Butterknife
+    compile "com.jakewharton:butterknife:8.0.1"
+    apt "com.jakewharton:butterknife-compiler:8.0.1"
+    // Dependency Injection
+    apt "com.google.dagger:dagger-compiler:2.2"
+    compile "com.google.dagger:dagger:2.2"
+    provided 'javax.annotation:jsr250-api:1.0'
+    // Gson
+    compile 'com.google.code.gson:gson:2.4'
+    // materialviewpager
+    compile 'com.github.florent37:materialviewpager:1.2.3'
+    // toasts
+    compile 'com.github.johnpersano:supertoasts:1.3.4@aar'
+    compile 'com.android.volley:volley:1.0.0'
+    //
+    compile "com.squareup.retrofit2:retrofit:2.0.0"
+    compile "com.squareup.retrofit2:converter-gson:2.0.0"
+    compile "com.squareup.retrofit2:adapter-rxjava:2.0.0"
+    compile "com.squareup.okhttp3:okhttp:3.2.0"
+    compile "com.squareup.okhttp3:logging-interceptor:3.2.0"
+
+    compile 'com.squareup.sqlbrite:sqlbrite:0.5.0'
+    compile 'com.squareup:otto:1.3.8'
+
+    compile 'io.reactivex:rxjava:1.1.5'
+    compile 'io.reactivex:rxandroid:1.2.0'
+
 }
