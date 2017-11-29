@@ -16,7 +16,7 @@ import vn.vnpt.ansv.bvbd11.common.injection.qualifier.ForApplication;
 @Module
 public class BvbdModule {
 
-    private Application mApplication;
+    protected final Application mApplication;
 
     public BvbdModule(Application mApplication) {
         this.mApplication = mApplication;
@@ -24,8 +24,7 @@ public class BvbdModule {
 
     @Provides
     @Singleton
-    @ForApplication
-    Application provideApplication() {
+     Application provideApplication() {
         return mApplication;
     }
 

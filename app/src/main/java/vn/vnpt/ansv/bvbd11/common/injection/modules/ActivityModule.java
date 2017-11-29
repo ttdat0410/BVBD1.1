@@ -4,18 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 
 import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
-import vn.vnpt.ansv.bvbd11.common.injection.qualifier.ForActivity;
-import vn.vnpt.ansv.bvbd11.common.injection.scope.ActivityScope;
 
 /**
  * Created by ANSV on 11/29/2017.
  */
 
 @Module
-@ActivityScope
 public class ActivityModule {
 
     private Activity mActivity;
@@ -25,15 +21,13 @@ public class ActivityModule {
 
     @Provides
     @Singleton
-    @ForActivity
     Activity provideActivity() {
         return mActivity;
     }
 
     @Provides
     @Singleton
-    @ForActivity
-    Context providesContexz() {
+    Context providesContext() {
         return mActivity;
     }
 }
