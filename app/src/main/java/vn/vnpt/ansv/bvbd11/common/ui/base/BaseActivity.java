@@ -13,40 +13,40 @@ import vn.vnpt.ansv.bvbd11.common.injection.components.DaggerActivityComponent;
 import vn.vnpt.ansv.bvbd11.common.injection.modules.ActivityModule;
 
 /**
- * Created by ANSV on 11/29/2017.
+ * Created by ANSV on 11/30/2017.
  */
 
 public class BaseActivity extends AppCompatActivity {
 
-    private ActivityComponent activityComponent;
+    private ActivityComponent mActivityComponent;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     public ActivityComponent activityComponent() {
-        if (activityComponent == null) {
-            activityComponent = DaggerActivityComponent
+        if (mActivityComponent == null) {
+            mActivityComponent = DaggerActivityComponent
                     .builder()
                     .activityModule(new ActivityModule(this))
                     .bvbdComponent(BvbdApplication.get(this).getBvbdComponent())
                     .build();
         }
-        return activityComponent;
+        return mActivityComponent;
     }
 
     @TargetApi(Build.VERSION_CODES.M)
-    public void requestPermissionsafely(String[] permissions, int requestCode) {
+    public void requestPermissionSafely(String[] permissions, int requestCode) {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode);
         }
     }
 
     @TargetApi(Build.VERSION_CODES.M)
-    public boolean hasPermisson(String permission) {
+    public boolean hasPermission(String permission) {
         return (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
                 || (checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED);
     }
-
 
 }

@@ -1,7 +1,7 @@
 package vn.vnpt.ansv.bvbd11.common.injection.components;
 
+import android.app.Application;
 import android.content.Context;
-import android.preference.PreferenceManager;
 
 import javax.inject.Singleton;
 
@@ -9,6 +9,7 @@ import dagger.Component;
 import vn.vnpt.ansv.bvbd11.common.app.BvbdApplication;
 import vn.vnpt.ansv.bvbd11.common.injection.modules.BvbdModule;
 import vn.vnpt.ansv.bvbd11.common.injection.qualifier.ForApplication;
+import vn.vnpt.ansv.bvbd11.data.PreferenceHelper;
 
 /**
  * Created by ANSV on 11/29/2017.
@@ -19,7 +20,8 @@ public interface BvbdComponent {
 
     @ForApplication
     Context context();
-//    PreferenceManager providePreferenceManager();
+    Application application();
+    PreferenceHelper preferenceHelper();
 
     void inject(BvbdApplication o);
 }

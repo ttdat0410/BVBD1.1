@@ -3,10 +3,10 @@ package vn.vnpt.ansv.bvbd11.common.ui.base;
 import vn.vnpt.ansv.bvbd11.common.utils.exceptions.ViewNotAttachedException;
 
 /**
- * Created by ANSV on 11/29/2017.
+ * Created by ANSV on 11/30/2017.
  */
 
-public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T>{
+public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
 
     private T baseView;
 
@@ -20,6 +20,10 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T>{
         if (baseView != null) {
             baseView = null;
         }
+    }
+
+    public T getBaseView() {
+        return baseView;
     }
 
     private boolean isViewAttached() {

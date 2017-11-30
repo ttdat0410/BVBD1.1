@@ -1,3 +1,54 @@
 <resources>
-    <string name="app_name">BVBD</string>
+    <string name="app_name">BVBD1.1.0</string>
+
+    <string name="title_log_in">ĐĂNG NHẬP</string>
+    <string name="title_username">Tên đăng nhập</string>
+    <string name="title_password">Mật khẩu</string>
+    <string name="title_settings">CÀI ĐẶT IP/PORT</string>
+    <string name="title_ip">IP</string>
+    <string name="title_port">PORT</string>
+    <string name="title_check_ip">Kiểm tra ip</string>
+    <string name="title_his">BỆNH VIỆN BƯU ĐIỆN</string>
+    <string name="title_app_name">GIÁM SÁT CẢM BIẾN</string>
+
+    <string name="status_server_success">Thành công</string>
+    <string name="status_server_this_object_already_exists">Đối tượng này đã tồn tại</string>
+    <string name="status_server_this_object_does_not_exist">Đối tượng này không tồn tại</string>
+    <string name="status_server_data_not_found">Không tìm thấy dữ liệu</string>
+    <string name="status_server_permission_denied">Không đủ quyền thực hiện/Quyền bị từ chối</string>
+    <string name="status_server_invalid_parameter">Sai thông số</string>
+    <string name="status_server_invalid_API_key">API key không hợp lệ</string>
+    <string name="status_server_API_key_not_found">Không tìm thấy API key</string>
+    <string name="status_server_username_or_password_is_incorrect">Tên đăng nhập hoặc mật khẩu không đúng</string>
+    <string name="status_server_system_error">Lỗi hệ thống, vui lòng thử lại sau</string>
+    <string name="status_server_action_is_blocked">Hành động bị chặn bởi hệ thống</string>
+    <string name="status_server_invalid_action">Hành động không hợp lệ</string>
+
+    <string name="error_username_is_empty">Tên đăng nhập không được để trống</string>
+    <string name="error_password_is_empty">Mật khẩu không được để trống</string>
+    <string name="error_username_incorrect">Tên đăng nhập hoặc mật khẩu không đúng</string>
+    <string name="error_password_incorrect">Mật khẩu không đúng</string>
+    <string name="error_username_unmatched_with_format">Tên đăng nhập không đúng định dạng</string>
+    <string name="error_password_unmatched_with_format">Mật khẩu không đúng định dạng</string>
+    <string name="error_api_key_invailable">Api key không khả dụng.</string>
+    <string name="error_user_id_invailable">User id không khả dụng.</string>
+
+    <string name="verify_checking_account">Đang kiểm tra tài khoản</string>
+    <string name="verify_login">Đang xác thực</string>
+    <string name="verify_login_success">Đăng nhập thành công</string>
+    <string name="verify_login_failure">Đăng nhập thất bại!</string>
+    <string name="verify_network_lost">Mất kết nối server!</string>
+    <string name="verify_get_stations_success">Lấy danh sách trạm thành công.</string>
+    <string name="verify_get_stations_failure">Lấy danh sách trạm thất bại.</string>
+
+    <string name="dialog_verify_login">Đang xác thực</string>
+    <string name="dialog_verify_get_sensor_list">Đang cập nhật dữ liệu...</string>
+    <string name="dialog_try_again_button">THỬ LẠI</string>
+    <string name="dialog_cancel">HỦY BỎ</string>
+
+    <string name="toast_get_data_success">Cập nhật dữ liệu thành công</string>
+    <string name="toast_get_data_failure">Cập nhật dữ liệu thất bại</string>
+
+    <string name="sensor_not_initialized">--</string>
+
 </resources>

@@ -6,13 +6,13 @@ package vn.vnpt.ansv.bvbd11.utils;
 
 public class BvbdPreference {
 
-    private String ip;
-    private String port;
-    private String username;
-    private String password;
-    private String apikey;
-    private String userid;
-    private String roleId;
+    public String ip;
+    public String port;
+    public String username;
+    public String password;
+    public String apikey;
+    public String userid;
+    public String roleId;
 
     public BvbdPreference() {
 

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/containerRelativeLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/match"
+    android:background="@color/transparent">
+
+    <ImageView
+        style="@style/match"
+        android:id="@+id/mm_background"
+        android:layout_marginTop="0dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/icn_splash"
+        android:visibility="visible"/>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/signintoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_XXXS"
+        android:layout_alignParentTop="true"
+        android:theme="@style/SearchToolbar"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/Popup" />
+
+    <ImageView
+        style="@style/match"
+        android:id="@+id/mm_vnpt_logo"
+        android:layout_marginTop="0dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/icn_vnpt_tech"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        style="@style/block"
+        android:id="@+id/logo_block"
+        android:layout_below="@id/signintoolbar"
+        android:orientation="vertical">
+
+        <ImageView
+            style="@style/wrap"
+            android:id="@+id/mm_hospital_logo"
+            android:layout_marginTop="@dimen/space_XXXS"
+            android:layout_marginLeft="@dimen/space_XXXS"
+            android:layout_gravity="left"
+            android:src="@mipmap/ic_logo_hospital" />
+
+        <TextView
+            android:id="@+id/titleAppName"
+            style="@style/ml_light_gray"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/space_M"
+            android:layout_gravity="center"
+            android:text="@string/title_app_name"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:fontFamily="sans-serif-bold"
+            android:visibility="visible"/>
+
+        <View
+            android:id="@+id/divLine"
+            style="@style/divider_line"
+            android:layout_width="25dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="@dimen/space_XXS"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:background="@color/sl_terbium_green"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <!-- Bottom panel -->
+    <FrameLayout
+        style="@style/match"
+        android:id="@+id/bottom_panel"
+        android:layout_below="@+id/titleAppName"
+        android:background="@color/transparent"
+        android:layout_marginTop="@dimen/space_XXXXXL"
+        android:visibility="invisible">
+
+        <ScrollView
+            style="@style/match"
+            android:layout_below="@+id/titleAppName"
+            android:fillViewport="true">
+
+            <LinearLayout
+                style="@style/block"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/space_S"
+                android:paddingRight="@dimen/space_S">
+
+                <TextView
+                    android:id="@+id/titleLogin"
+                    style="@style/l_terbium_green"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/space_XS"
+                    android:layout_gravity="left"
+                    android:text="@string/title_log_in"
+                    android:textAllCaps="true"
+                    android:visibility="visible"
+                    android:textColor="@color/transparent"/>
+
+                <!--set GONE HERE-->
+                <RelativeLayout
+                    android:id="@+id/name_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/settings_personal_info_height"
+                    android:visibility="visible">
+
+                    <EditText
+                        style="@style/l_light_gray"
+                        android:layout_width="match_parent"
+                        android:id="@+id/name_edit_text"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/transparent"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:fontFamily="sans-serif-medium"/>
+
+                    <TextView
+                        style="@style/m_bright_green"
+                        android:layout_above="@id/name_edit_text"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/title_username"
+                        android:textAllCaps="true"/>
+
+                    <View
+                        style="@style/divider_line"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/sl_terbium_green"/>
+
+                </RelativeLayout>
+
+                <!--set GONE HERE-->
+                <RelativeLayout
+                    android:id="@+id/password_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/settings_personal_info_height"
+                    android:layout_marginTop="@dimen/space_S"
+                    android:visibility="visible">
+
+                    <EditText
+                        style="@style/l_light_gray"
+                        android:id="@+id/password_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/transparent"
+                        android:padding="0dp"
+                        android:singleLine="true"
+                        android:inputType="textPassword"
+                        android:fontFamily="sans-serif-medium"/>
+
+                    <TextView
+                        style="@style/m_bright_green"
+                        android:layout_above="@id/password_edit_text"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/title_password"
+                        android:textAllCaps="true"/>
+
+                    <View
+                        android:id="@+id/v"
+                        style="@style/divider_line"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/sl_terbium_green" />
+                </RelativeLayout>
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/loginButton"
+                    style="@style/m_silicon_grey"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/space_S"
+                    android:layout_gravity="center"
+                    android:background="@color/sl_terbium_green"
+                    android:text="@string/title_log_in"
+                    android:textAllCaps="true" />
+
+                <TextView
+                    android:id="@+id/version"
+                    style="@style/xxs_light_grey"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/space_M"
+                    android:layout_gravity="bottom|end"
+                    android:textAlignment="center"
+                    android:text="@string/sensor_not_initialized" />
+
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+</RelativeLayout>

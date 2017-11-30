@@ -1,11 +1,184 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:popupMenuStyle">@style/Popup</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="colorPrimaryDark">@color/primary_color_dark</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="android:textColorPrimary">@color/grey_dark</item>
+    </style>
+
+    <!-- Isolate v14-21 components -->
+    <style name="AppTheme" parent="AppBaseTheme" />
+    <style name="StatusBarTranslucentTheme" parent="AppTheme" />
+
+    <style name="block">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="match">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@android:color/white</item>
+    </style>
+
+    <style name="Popup" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="SearchToolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:autoCompleteTextViewStyle">@style/SearchCursorColor</item>
+    </style>
+
+    <style name="SearchCursorColor" parent="Widget.AppCompat.AutoCompleteTextView">
+        <item name="android:textCursorDrawable">@drawable/cursor</item>
+    </style>
+
+    <style name="xxs_silicon_grey" parent="silicon_gray_text">
+        <item name="android:textSize">@dimen/text_size_XXS</item>
+    </style>
+
+    <style name="s_silicon_grey" parent="silicon_gray_text">
+        <item name="android:textSize">@dimen/text_size_S</item>
+    </style>
+
+    <style name="sm_footer_grey" parent="footer_gray_text">
+        <item name="android:textSize">@dimen/text_size_SM</item>
+    </style>
+
+    <style name="xxs_light_grey" parent="light_gray">
+        <item name="android:textSize">@dimen/text_size_XXS</item>
+    </style>
+
+    <style name="xs_silicon_grey_version" parent="silicon_gray_text">
+        <item name="android:textSize">@dimen/text_size_XS</item>
+    </style>
+
+    <style name="s_terbium_green" parent="terbium_green_text">
+        <item name="android:textSize">@dimen/text_size_S</item>
+    </style>
+
+    <style name="m_silicon_grey" parent="silicon_gray_text">
+        <item name="android:textSize">@dimen/text_size_M</item>
+    </style>
+
+    <style name="sm_silicon_grey" parent="silicon_gray_text">
+        <item name="android:textSize">@dimen/text_size_SM</item>
+    </style>
+
+    <style name="sm_terbium_green" parent="terbium_green_text">
+        <item name="android:textSize">@dimen/text_size_SM</item>
+    </style>
+
+    <style name="sm_bright_green" parent="bright_green_text">
+        <item name="android:textSize">@dimen/text_size_SM</item>
+    </style>
+
+    <style name="m_bright_green" parent="bright_green_text">
+        <item name="android:textSize">@dimen/text_size_M</item>
+    </style>
+
+    <style name="m_terbium_green" parent="terbium_green_text">
+        <item name="android:textSize">@dimen/text_size_M</item>
+    </style>
+
+    <style name="mm_terbium_green" parent="terbium_green_text">
+        <item name="android:textSize">@dimen/text_size_MM</item>
+    </style>
+
+    <style name="l_silicon_grey" parent="silicon_gray_text">
+        <item name="android:textSize">@dimen/text_size_L</item>
+    </style>
+
+    <style name="l_terbium_green" parent="terbium_green_text">
+        <item name="android:textSize">@dimen/text_size_L</item>
+    </style>
+
+    <style name="l_light_gray" parent="light_gray_text">
+        <item name="android:textSize">@dimen/text_size_L</item>
+    </style>
+
+    <style name="ml_light_gray" parent="light_gray_text">
+        <item name="android:textSize">@dimen/text_size_ML</item>
+    </style>
+
+    <style name="divider_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_height</item>
+        <item name="android:background">@color/sl_light_grey</item>
+    </style>
+
+    <style name="terbium_green_text" parent="wrap">
+        <item name="android:textColor">@color/sl_terbium_green</item>
+    </style>
+
+    <style name="bright_green_text" parent="wrap">
+        <item name="android:textColor">@color/sl_bright_green</item>
+    </style>
+
+    <style name="silicon_gray_text" parent="block">
+        <item name="android:textColor">@color/sl_silicon_grey</item>
+    </style>
+
+    <style name="footer_gray_text" parent="block">
+        <item name="android:textColor">@color/sl_footer_grey</item>
+    </style>
+
+    <style name="light_gray" parent="block">
+        <item name="android:textColor">@color/light_gray</item>
+    </style>
+
+    <style name="light_gray_text" parent="wrap">
+        <item name="android:textColor">@color/sl_light_grey</item>
+    </style>
+
+    <style name="box_left" parent="box">
+        <!--&lt;!&ndash;<item name="android:layout_marginRight">@dimen/space_XS</item>&ndash;&gt;-->
+    </style>
+
+    <style name="box">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/space_XXXXL</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="envtitle" parent="sm_silicon_grey">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:gravity">left</item>
+        <item name="android:background">@drawable/clear_rect</item>
+
+    </style>
+
+    <style name="envbox">
+        <item name="android:background">@drawable/white_rect</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:clipChildren">false</item>
+    </style>
+
+    <style name="envcontrol" parent="wrap">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingTop">12dp</item>-
     </style>
 
 </resources>
